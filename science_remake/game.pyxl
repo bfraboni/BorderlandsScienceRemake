@@ -86,7 +86,7 @@ def draw_level():
    
    // offset of the top left corner of the grid
    let offset_x = (SCREEN_SIZE.x - level_size_x) / 2.0
-   let offset_y = (SCREEN_SIZE.y - level_size_y + cell_size) / 2.0
+   let offset_y = (SCREEN_SIZE.y - level_size_y) / 2.0
    
    level_score = 0
    
@@ -239,24 +239,22 @@ def draw_score():
       // let char_color = lerp(#f, #0, s / title_size)
       let char_color = sample_palette(s / title_size, title_palette)
       // draw_text({font: instructionFont, text: title_text[s], pos: xy(offset_char_x, 16), color: char_color, shadow: rgba(0,0,0,50%), outline: #0, x_align: "center"})
-      draw_text({font: instructionFont, text: title_text[s], pos: xy(offset_char_x, 16), color: #f, shadow: rgba(0,0,0,50%), outline: #0, x_align: "center"})
+      draw_text({font: instructionFont, text: title_text[s], pos: xy(offset_char_x, 10), color: #f, shadow: rgba(0,0,0,50%), outline: #0, x_align: "center"})
       offset_char_x += text_width(instructionFont, title_text[s])+2
     
    // Score board
    let cell_size = 16
    let level_size_x = level_data.w * cell_size
    let level_size_y = level_data.h * cell_size
-   let offset_x = SCREEN_SIZE.x - 3 * cell_size
-   let offset_y = SCREEN_SIZE.y / 4
+   let offset_x = 3 * cell_size
+   let offset_y = SCREEN_SIZE.y / 4 
     
    draw_text(instructionFont, "Level "+(level_index+1), xy(offset_x, offset_y - 2 * cell_size), #15e0f7, rgba(0,0,0,50%), #0, 0, -1, 1) 
-      
-   draw_text(instructionFont, "Highest",  xy(offset_x, offset_y),                               #f768fd, rgba(0,0,0,50%), #0, 0, -1, 1)
+
+   draw_text(instructionFont, "Target",  xy(offset_x, offset_y),                               #f768fd, rgba(0,0,0,50%), #0, 0, -1, 1)
    draw_text(instructionFont, level_data.highest_score, xy(offset_x, offset_y + cell_size),     #15e0f7, rgba(0,0,0,50%), #0, 0, -1, 1)
    draw_text(instructionFont, "Score",    xy(offset_x, offset_y + 2 * cell_size),               #f768fd, rgba(0,0,0,50%), #0, 0, -1, 1)
    draw_text(instructionFont, level_score,xy(offset_x, offset_y + 3 * cell_size),               #f7aa00, rgba(0,0,0,50%), #0, 0, -1, 1)
-   // draw_text(instructionFont, "Target",   xy(offset_x, offset_y + 4 * cell_size),               #f768fd, rgba(0,0,0,50%), #0, 0, -1, 1)
-   // draw_text(instructionFont, level_data.target_score, xy(offset_x, offset_y + 5 * cell_size),  #15e0f7, rgba(0,0,0,50%), #0, 0, -1, 1)
    return
    
 // Draw instructions
@@ -264,23 +262,32 @@ def draw_help():
    let cell_size = 16
    let level_size_x = level_data.w * cell_size
    let level_size_y = level_data.h * cell_size
-   let offset_x = 3 * cell_size
+   let offset_x = SCREEN_SIZE.x - 3.5 * cell_size
    let offset_y = SCREEN_SIZE.y / 4
    
    draw_text(instructionFont, "Controls", xy(offset_x, offset_y - 2 * cell_size), #15e0f7, rgba(0,0,0,50%), #0, 0, -1, 1)
    
    draw_text(instructionFont, "Move" , xy(offset_x, offset_y), #f768fd, rgba(0,0,0,50%), #0, 0, -1, 1)
+   
+   let text_size = text_width(instructionFont, "Move")
+   draw_poly(select_poly1, gray(95%), nil, xy(offset_x + 0.25 * cell_size + text_size / 2, offset_y))
+   draw_poly(select_poly2, gray(95%), nil, xy(offset_x + 0.25 * cell_size + text_size / 2, offset_y))
+   draw_poly(select_poly3, gray(95%), nil, xy(offset_x + 0.25 * cell_size + text_size / 2, offset_y))
+   draw_poly(select_poly4, gray(95%), nil, xy(offset_x + 0.25 * cell_size + text_size / 2, offset_y))
+      
    let control_move = replace("[<] [>] [^] [v]", joy.prompt) 
    draw_text(instructionFont, control_move , xy(offset_x, offset_y + cell_size), #f7aa00, rgba(0,0,0,50%), #0, 0, -1, 1)
       
-   draw_text(instructionFont, "Place UP" , xy(offset_x, offset_y + 2 * cell_size), #f768fd, rgba(0,0,0,50%), #0, 0, -1, 1)
-   let control_up = replace("(a) / space", joy.prompt) 
+   text_size = text_width(instructionFont, "Add/Remove")
+   draw_text(instructionFont, "Add/Remove" , xy(offset_x, offset_y + 2 * cell_size), #f768fd, rgba(0,0,0,50%), #0, 0, -1, 1)
+   draw_sprite(sprite_mapping[CELL_UP].active, xy(offset_x + 0.75 * cell_size + text_size / 2, offset_y + 2.5 * cell_size), 0, nil, 1, 0, nil)
+   let control_up = replace("(a)", joy.prompt) 
    draw_text(instructionFont, control_up , xy(offset_x, offset_y + 3 * cell_size), #f7aa00, rgba(0,0,0,50%), #0, 0, -1, 1)
     
    draw_text(instructionFont, "Main menu" , xy(offset_x, offset_y + 4 * cell_size), #f768fd, rgba(0,0,0,50%), #0, 0, -1, 1)
-   let control_menu = replace("(b) / enter", joy.prompt) 
+   let control_menu = replace("(b)", joy.prompt) 
    draw_text(instructionFont, control_menu , xy(offset_x, offset_y + 5 * cell_size), #f7aa00, rgba(0,0,0,50%), #0, 0, -1, 1)
-   
+      
    return
    
 // Check win

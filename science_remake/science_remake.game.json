@@ -21,6 +21,7 @@
     ],
     "assets": {
         "font":             "quad://fonts/deja-8.font.json",
+        "font2":             "quad://fonts/deja-9.font.json",
         "instructionFont":  "quad://fonts/good-neighbors-9.font.json",
         "spriteSheet":      "./sprites/spritesheet.sprite.json",
         "spriteSheetLogo":  "./sprites/spritesheet_logo.sprite.json"
