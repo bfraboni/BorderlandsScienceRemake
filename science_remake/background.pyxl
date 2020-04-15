@@ -60,5 +60,5 @@ def draw_background(seed = 123456789):
       let star_color = sample_palette(rnd(0.0,1.0), star_palette)
       let star_scale = 1
       // draw star polygon
-      draw_poly(star_poly, star_color, nil, star_pos, 0, xy(star_scale, star_scale), )
+      draw_poly(star_poly, star_color, nil, star_pos, 0, xy(star_scale, star_scale) )
       

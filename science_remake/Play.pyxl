@@ -26,5 +26,12 @@ if joy.aa: place_up()
 // If the controller presses B, return to main menu
 if joy.bb:
    // play_audio_clip(playSound)
-   set_mode(Title) because "Return to main menu has been chosen"
+   set_mode(Title) because "Return to main menu"
 
+// TODO add an animation when level is won
+// If the high score is reached go to next level
+if check_win():
+   // play_audio_clip(winSound)
+   level_index = level_index + 1 mod size(global_level_data)   
+   create_level(level_index)
+   set_mode(Play) because "Level won"

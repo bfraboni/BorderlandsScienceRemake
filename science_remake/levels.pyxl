@@ -153,10 +153,6 @@ const global_level_data = [
    }
 ]
 
-// TODO remove this later
-// sort level data by width (for difficulty purposes)
-// sort(global_level_data, "w")
-
 
 
 
