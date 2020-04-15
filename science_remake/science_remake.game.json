@@ -1,80 +1,81 @@
 {
-   "title": "Borderlands Science Remake",
-   "developer": "Basile Fraboni",
-   "copyright": "©2020 Basile Fraboni",
-   "license": "Open source under the GPL-3.0-only license https://www.gnu.org/licenses/gpl-3.0.html",
-   "packages": [],
-   "scripts": [
-      "science_remake.pyxl",
-      "background.pyxl"
-   ],
-   "modes": [
-      "Play",
-      "Title*"
-   ],
-   "docs": [
-      {
-         "name": "Borderlands Science Remake",
-         "url": "todo.md"
-      }
-   ],
-   "assets": {
-      "font": "quad://fonts/deja-8.font.json",
-      "instructionFont": "quad://fonts/good-neighbors-9.font.json",
-      "spriteSheet": "quad://mygames/science_remake/sprites/spritesheet.sprite.json",
-      "spriteSheetLogo": "quad://mygames/science_remake/sprites/spritesheet_logo.sprite.json",
-      "spriteSheet2": "quad://sprites/kenney-ui-16x16.sprite.json"
-   },
-   "version": 0,
-   "min_players": 1,
-   "max_players": 1,
-   "cooperative": false,
-   "competitive": false,
-   "achievements": false,
-   "highscores": true,
-   "description": "This is a copy of Borderlands 3 Science minigame.",
-   "constants": {
-      "text_color": {
-         "type": "rgb",
-         "value": {
-            "r": {
-               "type": "number",
-               "value": 1
-            },
-            "g": {
-               "type": "number",
-               "value": 1
-            },
-            "b": {
-               "type": "number",
-               "value": 1
+    "title": "Borderlands Science Remake",
+    "developer": "Basile Fraboni",
+    "copyright": "©2020 Basile Fraboni",
+    "license": "Open source under the GPL-3.0-only license https://www.gnu.org/licenses/gpl-3.0.html",
+    "packages": [],
+    "scripts": [
+        "game.pyxl",
+        "background.pyxl",
+        "levels.pyxl"
+    ],
+    "modes": [
+        "Title*",
+        "Play"
+    ],
+    "docs": [
+        {
+            "name": "Borderlands Science Remake",
+            "url": "todo.md"
+        }
+    ],
+    "assets": {
+        "font": "quad://fonts/deja-8.font.json",
+        "instructionFont": "quad://fonts/good-neighbors-9.font.json",
+        "spriteSheet": "quad://mygames/science_remake/sprites/spritesheet.sprite.json",
+        "spriteSheetLogo": "quad://mygames/science_remake/sprites/spritesheet_logo.sprite.json",
+        "spriteSheet2": "quad://sprites/kenney-ui-16x16.sprite.json"
+    },
+    "version": 0,
+    "min_players": 1,
+    "max_players": 1,
+    "cooperative": false,
+    "competitive": false,
+    "achievements": false,
+    "highscores": true,
+    "description": "This is a copy of Borderlands 3 Science minigame.",
+    "constants": {
+        "text_color": {
+            "type": "rgb",
+            "value": {
+                "r": {
+                    "type": "number",
+                    "value": 1
+                },
+                "g": {
+                    "type": "number",
+                    "value": 1
+                },
+                "b": {
+                    "type": "number",
+                    "value": 1
+                }
             }
-         }
-      },
-      "BG_COLOR": {
-         "type": "rgb",
-         "value": {
-            "r": 0.14,
-            "g": 0.18,
-            "b": 0.27
-         }
-      },
-      "PI": {
-         "type": "number",
-         "value": "3.14159265358979323846"
-      },
-      "BG_COLOR2": {
-         "type": "rgb",
-         "value": {
-            "r": 0,
-            "g": 31,
-            "b": 54
-         }
-      }
-   },
-   "screen_size": {
-      "x": 384,
-      "y": 224
-   },
-   "flip_y": false
+        },
+        "BG_COLOR": {
+            "type": "rgb",
+            "value": {
+                "r": 0.14,
+                "g": 0.18,
+                "b": 0.27
+            }
+        },
+        "PI": {
+            "type": "number",
+            "value": "3.14159265358979323846"
+        },
+        "BG_COLOR2": {
+            "type": "rgb",
+            "value": {
+                "r": 0,
+                "g": 31,
+                "b": 54
+            }
+        }
+    },
+    "screen_size": {
+        "x": 384,
+        "y": 224
+    },
+    "flip_y": false
 }
