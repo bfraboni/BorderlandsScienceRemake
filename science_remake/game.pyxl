@@ -236,31 +236,21 @@ def draw_score():
       // draw_text({font: instructionFont, text: title_text[s], pos: xy(offset_char_x, 16), color: char_color, shadow: rgba(0,0,0,50%), outline: #0, x_align: "center"})
       draw_text({font: instructionFont, text: title_text[s], pos: xy(offset_char_x, 16), color: #f, shadow: rgba(0,0,0,50%), outline: #0, x_align: "center"})
       offset_char_x += text_width(instructionFont, title_text[s])+2
-      
-   // draw_text({font: instructionFont, text: "Borderlands Science Remake", pos: xy(0.5 * SCREEN_SIZE.x, 16), color: #f, x_align: "center"})
-   
+    
    // Score board
    let cell_size = 16
    let level_size_x = level_data.w * cell_size
    let level_size_y = level_data.h * cell_size
    let offset_x = SCREEN_SIZE.x - 3 * cell_size
    let offset_y = SCREEN_SIZE.y / 4
-   
-                  
+    
    draw_text(instructionFont, "Highest",  xy(offset_x, offset_y),                               #f768fd, rgba(0,0,0,50%), #0, 0, -1, 1)
    draw_text(instructionFont, level_data.highest_score, xy(offset_x, offset_y + cell_size),     #15e0f7, rgba(0,0,0,50%), #0, 0, -1, 1)
    draw_text(instructionFont, "Score",    xy(offset_x, offset_y + 2 * cell_size),               #f768fd, rgba(0,0,0,50%), #0, 0, -1, 1)
    draw_text(instructionFont, level_score,xy(offset_x, offset_y + 3 * cell_size),               #f7aa00, rgba(0,0,0,50%), #0, 0, -1, 1)
-   draw_text(instructionFont, "Target",   xy(offset_x, offset_y + 4 * cell_size),               #f768fd, rgba(0,0,0,50%), #0, 0, -1, 1)
-   draw_text(instructionFont, level_data.target_score, xy(offset_x, offset_y + 5 * cell_size),  #15e0f7, rgba(0,0,0,50%), #0, 0, -1, 1)
+   // draw_text(instructionFont, "Target",   xy(offset_x, offset_y + 4 * cell_size),               #f768fd, rgba(0,0,0,50%), #0, 0, -1, 1)
+   // draw_text(instructionFont, level_data.target_score, xy(offset_x, offset_y + 5 * cell_size),  #15e0f7, rgba(0,0,0,50%), #0, 0, -1, 1)
    return
-   
-// Add a menu option to go back to the main menu
-def back_to_main():
-   set_mode(Title) because "Return to main menu has been selected"
-
-let option = {text:"Main menu", callback:back_to_main, confirm:false}
-set_pause_menu(option)
    
    
    

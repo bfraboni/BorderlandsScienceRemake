@@ -23,6 +23,8 @@ if joy.yy < 0: move_up()
 // Place new up brick / remove already placed up brick
 if joy.aa: place_up()
    
-
-
+// If the controller presses B, return to main menu
+if joy.bb:
+   // play_audio_clip(playSound)
+   set_mode(Title) because "Return to main menu has been chosen"
 
