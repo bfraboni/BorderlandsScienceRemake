@@ -1,0 +1,28 @@
+Play
+════════════════════════════════════════════════════════════════════════
+
+
+frame
+────────────────────────────────────────────────────────────────────────────
+
+// Draw starry background, defined in background.pyxl
+draw_background(level_index+1234)
+
+// Draw level
+draw_level()
+
+// Draw score
+draw_score()
+
+// Change selected cell
+if joy.xx > 0: move_right()
+if joy.xx < 0: move_left()
+if joy.yy > 0: move_down()
+if joy.yy < 0: move_up()
+   
+// Place new up brick / remove already placed up brick
+if joy.aa: place_up()
+   
+
+
+

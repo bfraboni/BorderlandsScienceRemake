@@ -1,0 +1,63 @@
+Title
+════════════════════════════════════════════════════════════════════════
+
+const ACTIVE_COLOR  = rgb(1,1,0)
+const DEFAULT_COLOR = gray(60%)
+const SHADOW_COLOR  = rgba(0,0,0,50%)
+
+let levels = 25
+let selected = level_index
+
+frame
+────────────────────────────────────────────────────────────────────────────
+
+// Draw starry background, defined in background.pyxl
+draw_background()
+   
+// Draw game title
+// TODO draw game logo instead
+// draw_text({font: instructionFont, text: "Borderlands Science Remake", pos: xy(0.5 * SCREEN_SIZE.x, 20), color: #f, x_align: "center"})
+// TODO draw game logo instead
+draw_sprite(spriteSheetLogo[0][1], xy(SCREEN_SIZE.x/2, 100), 0, nil, 1, 0, nil)
+
+
+let title_palette = [#fece00, #ea690e, #ff00fc, #970ceb]
+
+// Level selection
+for p in [-1,0,1]:
+   if p+selected >= 0 && p+selected < levels:
+      let posx = (p+2.0) / 4.0
+      let item_pos = xy(posx * SCREEN_SIZE.x, 0.75 * SCREEN_SIZE.y) 
+      let color = sample_palette((p+selected) / levels, title_palette)
+      // let item_color = p == 0 ? color : #32143f/2
+      let item_color = p == 0 ? #15e0f7 : #32143f/2
+      let item_shadow = p == 0 ? SHADOW_COLOR : SHADOW_COLOR
+      let item_outline = p == 0 ? #0 : #0
+      let item_text = p == 0 ? replace("[<] Level " + (p + selected + 1) + " [>]", joy.prompt) : "Level " + (p + selected + 1)
+      draw_text(  instructionFont, 
+                  item_text, 
+                  item_pos, 
+                  item_color, 
+                  item_shadow, // shadow
+                  item_outline, // outline
+                  "center", // x_align 
+                  "baseline") // y_align 
+   
+      // draw_text({font: instructionFont, text: item_text, pos: item_pos, color: item_color, x_align: "center"})
+
+// If the controller presses left or right, change the selected level
+if joy.xx > 0:
+   // play_audio_clip(menuSound)
+   selected = (selected + levels + 1) mod levels
+   
+if joy.xx < 0:
+   // play_audio_clip(menuSound)
+   selected = (selected + levels - 1) mod levels
+   
+// If the controller presses A, play the selected level
+if joy.a:
+   // play_audio_clip(playSound)
+   level_index = selected
+   create_level(level_index)
+   set_mode(Play) because "Level has been chosen"
+

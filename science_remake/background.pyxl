@@ -1,0 +1,69 @@
+// Stars color palette
+// "What colors have the stars ?", Mitchell Charity
+// http://www.vendian.org/mncharity/dir3/starcolor/
+const star_palette = [
+   #9db4ff, #a2b9ff, #a7bcff, #aabfff, #afc3ff, #baccff, #c0d1ff, 
+   #cad8ff, #e4e8ff, #edeeff, #fbf8ff, #fff9f9, #fff5ec, #fff4e8, 
+   #fff1df, #ffebd1, #ffd7ae, #ffc690, #ffbe7f, #ffbb7b, #ffbb7b
+]
+
+// Sample the color palette using the value t in [0,1]
+def sample_palette(t, palette):
+   let v = t * (size(palette)-1)
+   let i1 = floor(v)
+   let fract = v - i1
+   let i2 = min(i1 + 1, size(palette)-1)
+   return lerp(palette[i1], palette[i2], fract)
+   
+// Simple 7x7 star polygon
+//  -3-2-1 0 1 2 3
+//-3       o      
+//-2              
+//-1     o   o    
+// 0 o           o
+// 1     o   o
+// 2
+// 3       o
+//
+// const star_poly = [ 
+//   xy(0, -3), xy(1, -1), xy(3, 0), 
+//   xy(1, 1), xy(0, 3), xy(-1, 1), 
+//   xy(-3, 0), xy(-1, -1), xy(0, -3)
+// ]
+
+// Simple 9x9 star polygon
+//   0 1 2 3 4 5 6 7 8
+// 0         o
+// 1             
+// 2              
+// 3       o   o    
+// 4 o               o
+// 5       o   o
+// 6
+// 7       
+// 8         o
+//
+const star_poly = [xy(4, 0), xy(5, 3), xy(8, 4), xy(5, 5), xy(4, 8), xy(3, 5), xy(0, 4), xy(3, 3), xy(4, 0)]
+   
+// Draw starry background
+def draw_background(seed = 123456789):
+   // Background color
+   // TODO try replace with noise 
+   //set_background(BG_COLOR)
+   set_background(#001f36)
+   // set_background(#190A20)
+   
+   // draw stars
+   let rnd = make_random(seed)
+   let star_dir_x = rnd(-2, 2)
+   let star_dir_y = rnd(-1, 1)
+   let star_dir = 10.0 * xy(star_dir_x, star_dir_y) * now()
+   let stars = 0
+   while stars < 50:
+      stars += 1
+      let star_pos = loop(xy(rnd(0.0, SCREEN_SIZE.x)+0.5, rnd(0.0, SCREEN_SIZE.y)+0.5) + star_dir, SCREEN_SIZE)
+      let star_color = sample_palette(rnd(0.0,1.0), star_palette)
+      let star_scale = 1
+      // draw star polygon
+      draw_poly(star_poly, star_color, nil, star_pos, 0, xy(star_scale, star_scale), )
+      

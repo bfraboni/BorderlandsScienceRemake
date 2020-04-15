@@ -1,0 +1,6 @@
+{
+    "url":          "spritesheet_logo.png",
+    "sprite_size":  {"x": 180, "y": 100},
+    "gutter":       0,
+    "license" :     "By Elise Guiraud and Basile Fraboni 2020, in the Public Domain/CC0 1.0 https://creativecommons.org/publicdomain/zero/1.0/"
+}
