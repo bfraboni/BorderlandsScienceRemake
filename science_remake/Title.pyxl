@@ -1,12 +1,6 @@
 Title
 ════════════════════════════════════════════════════════════════════════
 
-const ACTIVE_COLOR  = rgb(1,1,0)
-const DEFAULT_COLOR = gray(60%)
-const SHADOW_COLOR  = rgba(0,0,0,50%)
-
-let levels = 25
-let selected = level_index
 
 frame
 ────────────────────────────────────────────────────────────────────────────
@@ -25,30 +19,29 @@ let title_palette = [#fece00, #ea690e, #ff00fc, #970ceb]
 
 // Level selection
 for p in [-1,0,1]:
-   if p+selected >= 0 && p+selected < levels:
+   if p+level_index >= 0 && p+level_index < size(global_level_data):
       let posx = (p+2.0) / 4.0
       let item_pos = xy(posx * SCREEN_SIZE.x, 0.75 * SCREEN_SIZE.y) 
-      let color = sample_palette((p+selected) / levels, title_palette)
+      let color = sample_palette((p+level_index) / size(global_level_data), title_palette)
       // let item_color = p == 0 ? color : #32143f/2
       let item_color = p == 0 ? #15e0f7 : #32143f/2
-      let item_shadow = p == 0 ? SHADOW_COLOR : SHADOW_COLOR
+      let item_shadow = rgba(0,0,0,50%)
       let item_outline = p == 0 ? #0 : #0
-      let item_text = p == 0 ? replace("[<] Level " + (p + selected + 1) + " [>]", joy.prompt) : "Level " + (p + selected + 1)
+      let item_text = p == 0 ? replace("[<] Level " + (p + level_index + 1) + " [>]", joy.prompt) : "Level " + (p + level_index + 1)
       draw_text(  instructionFont, item_text, item_pos, item_color, item_shadow, item_outline, "center", "baseline") 
 
 // If the controller presses left or right, change the selected level
 if joy.xx > 0:
    // play_audio_clip(menuSound)
-   selected = (selected + levels + 1) mod levels
+   level_index = (level_index + size(global_level_data) + 1) mod size(global_level_data)
    
 if joy.xx < 0:
    // play_audio_clip(menuSound)
-   selected = (selected + levels - 1) mod levels
+   level_index = (level_index + size(global_level_data) - 1) mod size(global_level_data)
    
 // If the controller presses A, play the selected level
 if joy.a:
    // play_audio_clip(playSound)
-   level_index = selected
    create_level(level_index)
    set_mode(Play) because "Level has been chosen"
 

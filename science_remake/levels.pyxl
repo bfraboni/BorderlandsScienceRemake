@@ -5,9 +5,115 @@ const CELL_TYPE2    = (1 << 2)
 const CELL_TYPE3    = (1 << 3)
 const CELL_TYPE4    = (1 << 4)
 const CELL_UP       = (1 << 5)
+const CELL_INACTIVE = (1 << 6)
 
 const global_level_data = [
-   // level 1
+   ////////////////////////////////////////////////////////////////////////////////////
+   { 
+      w:4,  
+      h:6, 
+      ops:6, 
+      highest_score:4,
+      data:
+      [
+         CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, 
+         CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, 
+         CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, 
+         CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, 
+         CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, 
+         CELL_TYPE2, CELL_TYPE3, CELL_TYPE1, CELL_TYPE4
+      ],
+      match:
+      [ 
+         CELL_INACTIVE, 
+         CELL_INACTIVE, 
+         CELL_TYPE4, 
+         CELL_TYPE1,
+         CELL_TYPE3,
+         CELL_TYPE2
+      ]
+   },
+   ////////////////////////////////////////////////////////////////////////////////////
+   { 
+      w:4,  
+      h:6, 
+      ops:6, 
+      target_score:12,
+      highest_score:12,
+      data:
+      [
+         CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, 
+         CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, 
+         CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, 
+         CELL_TYPE1, CELL_TYPE2, CELL_TYPE3, CELL_TYPE4, 
+         CELL_TYPE1, CELL_TYPE2, CELL_TYPE3, CELL_TYPE4, 
+         CELL_TYPE1, CELL_TYPE2, CELL_TYPE3, CELL_TYPE4
+      ],
+      match:
+      [ 
+         CELL_TYPE4, 
+         CELL_TYPE4 bitor CELL_TYPE3, 
+         CELL_TYPE4 bitor CELL_TYPE3 bitor CELL_TYPE2, 
+         CELL_TYPE3 bitor CELL_TYPE2 bitor CELL_TYPE1, 
+         CELL_TYPE2 bitor CELL_TYPE1, 
+         CELL_TYPE1
+      ]
+   },
+   ////////////////////////////////////////////////////////////////////////////////////
+   { 
+      w:4,  
+      h:6, 
+      ops:10, 
+      highest_score:8,
+      data:
+      [
+         CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, 
+         CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, 
+         CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY,  
+         CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY,  
+         CELL_TYPE1, CELL_TYPE2, CELL_TYPE2, CELL_TYPE1,
+         CELL_TYPE3, CELL_TYPE3, CELL_TYPE3, CELL_TYPE3
+      ],
+      match:
+      [ 
+         CELL_INACTIVE, 
+         CELL_TYPE1, 
+         CELL_TYPE2,
+         CELL_TYPE4,
+         CELL_TYPE3,
+         CELL_INACTIVE 
+      ]
+   },
+   ////////////////////////////////////////////////////////////////////////////////////
+   { 
+      w:4,  
+      h:8, 
+      ops:4, 
+      highest_score:10,
+      data:
+      [
+         CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, 
+         CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, 
+         CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY,  
+         CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY,  
+         CELL_TYPE3, CELL_TYPE4, CELL_TYPE4, CELL_TYPE3,
+         CELL_TYPE2, CELL_TYPE1, CELL_TYPE1, CELL_TYPE2,
+         CELL_TYPE4, CELL_TYPE3, CELL_TYPE3, CELL_TYPE4,
+         CELL_TYPE1, CELL_TYPE2, CELL_TYPE2, CELL_TYPE1
+      ],
+      match:
+      [ 
+         CELL_INACTIVE, 
+         CELL_INACTIVE, 
+         CELL_TYPE3, 
+         CELL_TYPE2,
+         CELL_TYPE4,
+         CELL_TYPE4,
+         CELL_TYPE1,
+         CELL_INACTIVE 
+      ]
+   },
+   ////////////////////////////////////////////////////////////////////////////////////
    {
       w:7, 
       h:12,
@@ -44,35 +150,12 @@ const global_level_data = [
          CELL_TYPE1 bitor CELL_TYPE4,
          CELL_TYPE1 bitor CELL_TYPE4
       ]        
-   },
-   // level 2
-   { 
-      w:4,  
-      h:6, 
-      ops:6, 
-      target_score:12,
-      highest_score:12,
-      data:
-      [
-         CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, 
-         CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, 
-         CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, 
-         CELL_TYPE1, CELL_TYPE2, CELL_TYPE3, CELL_TYPE4, 
-         CELL_TYPE1, CELL_TYPE2, CELL_TYPE3, CELL_TYPE4, 
-         CELL_TYPE1, CELL_TYPE2, CELL_TYPE3, CELL_TYPE4
-      ],
-      match:
-      [ 
-         CELL_TYPE4, 
-         CELL_TYPE4 bitor CELL_TYPE3, 
-         CELL_TYPE4 bitor CELL_TYPE3 bitor CELL_TYPE2, 
-         CELL_TYPE3 bitor CELL_TYPE2 bitor CELL_TYPE1, 
-         CELL_TYPE2 bitor CELL_TYPE1, 
-         CELL_TYPE1
-      ]
    }
 ]
 
+// TODO remove this later
+// sort level data by width (for difficulty purposes)
+// sort(global_level_data, "w")
 
 
 

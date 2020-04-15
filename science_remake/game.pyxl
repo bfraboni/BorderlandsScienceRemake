@@ -2,8 +2,8 @@
 const sprite_mapping = {
    1 : {    
             active:     spriteSheet[1][4], 
-            inactive:   spriteSheet[1][4], 
-            detail:     spriteSheet[1][4]
+            inactive:   spriteSheet[1][5], 
+            detail:     spriteSheet[1][5]
        },
    2 : {    
             active:     spriteSheet[0][0], 
@@ -28,7 +28,12 @@ const sprite_mapping = {
    32 : {   
             active:     spriteSheet[0][4], 
             inactive:   spriteSheet[1][4], 
-            detail:     spriteSheet[0][4]
+            detail:     spriteSheet[1][5]
+       },
+   64 : {   
+            active:     spriteSheet[1][5], 
+            inactive:   spriteSheet[1][5], 
+            detail:     spriteSheet[1][5]
        }
 }
 
@@ -135,24 +140,24 @@ def draw_level():
    // draw remaining up operators on the right side
    let offset_ops_x = offset_x + cell_size + level_size_x
    let offset_ops_y = offset_y + level_size_y - cell_size
-   for op < level_ops:
+   for op < min(level_data.h, level_ops): // number of ops to draw is clamped to level height
       const sprite = sprite_mapping[CELL_UP]
       let sprite_pos_x = offset_ops_x
       let sprite_pos_y = offset_ops_y
       let sprite_pos = xy(sprite_pos_x, sprite_pos_y)
-      draw_sprite(sprite_mapping[CELL_UP].active, sprite_pos + xy(cell_size/2, cell_size/2), 0, nil, 1, 0, nil)
+      draw_sprite(sprite_mapping[CELL_UP].active, sprite_pos + xy(0, cell_size/2), 0, nil, 1, 0, nil)
       // draw_poly(cell_poly, color_mapping[CELL_UP].fill, color_mapping[CELL_UP].border, sprite_pos)
       // draw_poly(arrow_poly, color_mapping[CELL_UP].border, nil, sprite_pos)
       offset_ops_y = offset_ops_y - cell_size
       
    // draw an empty cell under used operators on the right side
-   for op < level_data.ops - level_ops:
+   for op < min(level_data.h, level_data.ops) - level_ops: // number of ops to draw is clamped to level height
       const sprite = sprite_mapping[CELL_UP]
       let sprite_pos_x = offset_ops_x
       let sprite_pos_y = offset_ops_y
       let sprite_pos = xy(sprite_pos_x, sprite_pos_y)
       // draw_sprite(sprite_mapping[CELL_EMPTY].active, sprite_pos + xy(cell_size/2, cell_size/2), 0, nil, 1, 0, nil)
-      draw_poly(cell_poly, color_mapping[CELL_EMPTY].fill/2, color_mapping[CELL_EMPTY].border/ 2, sprite_pos)
+      draw_poly(cell_poly, color_mapping[CELL_EMPTY].fill/2, color_mapping[CELL_EMPTY].border/ 2, sprite_pos - xy(cell_size/2, 0) )
       offset_ops_y = offset_ops_y - cell_size
    
    // draw number of ops
