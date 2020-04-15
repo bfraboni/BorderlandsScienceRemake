@@ -1,0 +1,266 @@
+// global game functions
+const sprite_mapping = {
+   1 : {    
+            active:     spriteSheet[1][4], 
+            inactive:   spriteSheet[1][4], 
+            detail:     spriteSheet[1][4]
+       },
+   2 : {    
+            active:     spriteSheet[0][0], 
+            inactive:   spriteSheet[1][0], 
+            detail:     spriteSheet[2][0]
+       },
+   4 : {   
+            active:     spriteSheet[0][3], 
+            inactive:   spriteSheet[1][3], 
+            detail:     spriteSheet[2][3]
+       },
+   8 : {    
+            active:     spriteSheet[0][2], 
+            inactive:   spriteSheet[1][2], 
+            detail:     spriteSheet[2][2]
+       },
+   16 : {    
+            active:     spriteSheet[0][1], 
+            inactive:   spriteSheet[1][1], 
+            detail:     spriteSheet[2][1]
+       },
+   32 : {   
+            active:     spriteSheet[0][4], 
+            inactive:   spriteSheet[1][4], 
+            detail:     spriteSheet[0][4]
+       }
+}
+
+// test code when building the game
+const color_mapping = {
+   1 : {fill:#32143f, border:#0},         // empty
+   2 : {fill:#00ccc4, border:#01ffe2},    // type 1 : green
+   4 : {fill:#009ae2, border:#00ccfe},    // type 2 : blue
+   8 : {fill:#6a01cd, border:#8b30ff},    // type 3 : dark purple 
+   16 : {fill:#d001fc, border:#f07aff},   // type 4 : light purple
+   32 : {fill:#ffb300, border:#fce300},   // up
+}
+
+let level_index = 0
+let level_data
+let level_score = 0
+let level_high_score = 0
+let level_ops = 0
+let level_select = xy(0, 0)
+
+def create_level(level):
+   // default test value
+   let level_data_index = level mod size(global_level_data)
+   level_data = deep_clone(global_level_data[level_data_index]) // need deep clone instead
+   level_select = xy(floor(level_data.w/2), floor(level_data.h/2))
+   level_high_score = 0
+   level_score = 0
+   level_ops = level_data.ops
+   return 
+
+def compute_score(level_data):
+   return 0
+
+// cell polygon rounded corner rectangle
+const cell_poly = [xy(3,1), xy(12,1), xy(14,3), xy(14,12), xy(12,14), xy(3,14), xy(1,12), xy(1,3), xy(3,1)]
+const arrow_poly = [xy(7,4), xy(8,4), xy(11,7), xy(9,7), xy(9,11), xy(6,11), xy(6,7), xy(4,7), xy(7,4)]
+
+// selected cell while angles
+const select_poly1 = [xy(2,0), xy(4,0), xy(4,1), xy(3,1), xy(1,3), xy(1,4), xy(0,4), xy(0,2)]
+const select_poly2 = [xy(13,0), xy(11,0), xy(11,1), xy(12,1), xy(14,3), xy(14,4), xy(15,4), xy(15,2)]
+const select_poly3 = [xy(2,15), xy(4,15), xy(4,14), xy(3,14), xy(1,12), xy(1,11), xy(0,11), xy(0,13)]
+const select_poly4 = [xy(13,15), xy(11,15), xy(11,14), xy(12,14), xy(14,12), xy(14,11), xy(15,11), xy(15,13)]
+let show_select = true
+
+// draw level and compute score
+def draw_level():
+   let cell_size = 16
+   let level_size_x = level_data.w * cell_size
+   let level_size_y = level_data.h * cell_size
+   
+   // offset of the top left corner of the grid
+   let offset_x = (SCREEN_SIZE.x - level_size_x) / 2.0
+   let offset_y = (SCREEN_SIZE.y - level_size_y + cell_size) / 2.0
+   
+   level_score = 0
+   
+   // draw level
+   for y < level_data.h:
+      // draw level grid
+      let full_row = true
+      for x < level_data.w:
+         let cell_index = y * level_data.w + x
+         let cell_type = level_data.data[cell_index]
+         const sprite = sprite_mapping[cell_type]
+         let sprite_pos_x = offset_x + x * cell_size
+         let sprite_pos_y = offset_y + y * cell_size
+         let sprite_pos = xy(sprite_pos_x, sprite_pos_y)
+         
+         // update score
+         if cell_type bitand level_data.match[y]:
+            level_score += 1
+            draw_sprite(sprite_mapping[cell_type].active, sprite_pos + xy(cell_size/2, cell_size/2), 0, nil, 1, 0, nil)
+            // draw_poly(cell_poly, color_mapping[cell_type].fill, color_mapping[cell_type].border, sprite_pos)
+         else:
+            full_row = false
+            if cell_type == CELL_UP:               
+               draw_sprite(sprite_mapping[cell_type].active, sprite_pos + xy(cell_size/2, cell_size/2), 0, nil, 1, 0, nil)
+               // draw_poly(cell_poly, color_mapping[cell_type].fill, color_mapping[cell_type].border, sprite_pos)
+               // draw_poly(arrow_poly, color_mapping[cell_type].border, nil, sprite_pos)
+            else:
+               if cell_type == CELL_EMPTY:
+                  draw_poly(cell_poly, color_mapping[cell_type].fill / 2, color_mapping[cell_type].border / 2, sprite_pos)
+                  // draw_poly(cell_poly, #190a20, color_mapping[cell_type].border, sprite_pos)
+               else:
+                  draw_sprite(sprite_mapping[cell_type].inactive, sprite_pos + xy(cell_size/2, cell_size/2), 0, nil, 1, 0, nil)
+      
+      // if a row is fully matched add bonus points (+2 per row)
+      if full_row:      
+         level_score += 2
+         draw_text(instructionFont, "+"+2, xy(offset_x - cell_size / 2, offset_y + y * cell_size), #f, rgba(0,0,0,50%), nil, 0, -1, 1)
+      
+      // draw row matching on the left side
+      let offset_match_x = offset_x - 2 * cell_size
+      for cell_type in [CELL_TYPE1, CELL_TYPE2, CELL_TYPE3, CELL_TYPE4]:
+         if cell_type bitand level_data.match[y]:
+            const sprite = sprite_mapping[cell_type]
+            let sprite_pos_x = offset_match_x
+            let sprite_pos_y = offset_y + y * cell_size
+            let sprite_pos = xy(sprite_pos_x, sprite_pos_y)
+            draw_sprite(sprite_mapping[cell_type].detail, sprite_pos + xy(cell_size/2, cell_size/2))
+            // draw_poly(cell_poly, color_mapping[cell_type].fill, color_mapping[cell_type].border, sprite_pos)
+            offset_match_x = offset_match_x - cell_size
+            
+   // draw remaining up operators on the right side
+   let offset_ops_x = offset_x + cell_size + level_size_x
+   let offset_ops_y = offset_y + level_size_y - cell_size
+   for op < level_ops:
+      const sprite = sprite_mapping[CELL_UP]
+      let sprite_pos_x = offset_ops_x
+      let sprite_pos_y = offset_ops_y
+      let sprite_pos = xy(sprite_pos_x, sprite_pos_y)
+      draw_sprite(sprite_mapping[CELL_UP].active, sprite_pos + xy(cell_size/2, cell_size/2), 0, nil, 1, 0, nil)
+      // draw_poly(cell_poly, color_mapping[CELL_UP].fill, color_mapping[CELL_UP].border, sprite_pos)
+      // draw_poly(arrow_poly, color_mapping[CELL_UP].border, nil, sprite_pos)
+      offset_ops_y = offset_ops_y - cell_size
+      
+   // draw an empty cell under used operators on the right side
+   for op < level_data.ops - level_ops:
+      const sprite = sprite_mapping[CELL_UP]
+      let sprite_pos_x = offset_ops_x
+      let sprite_pos_y = offset_ops_y
+      let sprite_pos = xy(sprite_pos_x, sprite_pos_y)
+      // draw_sprite(sprite_mapping[CELL_EMPTY].active, sprite_pos + xy(cell_size/2, cell_size/2), 0, nil, 1, 0, nil)
+      draw_poly(cell_poly, color_mapping[CELL_EMPTY].fill/2, color_mapping[CELL_EMPTY].border/ 2, sprite_pos)
+      offset_ops_y = offset_ops_y - cell_size
+   
+   // draw number of ops
+   let offset_nbops_x = offset_x + level_size_x + 3.5 * cell_size
+   let offset_nbops_y = offset_y + level_size_y - cell_size + 1
+   draw_text(instructionFont, level_ops+"/"+level_data.ops, xy(offset_nbops_x, offset_nbops_y), color_mapping[CELL_UP].border, rgba(0,0,0,50%), nil, 0, -1, 1)
+   
+   // alternate show / hide the selected cell
+   if game_frames mod 20 == 0:
+      show_select = not show_select
+   
+   // show the selection whites angles on the current cell
+   if show_select:
+      draw_poly(select_poly1, gray(95%), nil, xy(offset_x + level_select.x * cell_size, offset_y + level_select.y * cell_size))
+      draw_poly(select_poly2, gray(95%), nil, xy(offset_x + level_select.x * cell_size, offset_y + level_select.y * cell_size))
+      draw_poly(select_poly3, gray(95%), nil, xy(offset_x + level_select.x * cell_size, offset_y + level_select.y * cell_size))
+      draw_poly(select_poly4, gray(95%), nil, xy(offset_x + level_select.x * cell_size, offset_y + level_select.y * cell_size))
+   
+   level_high_score = max(level_score, level_high_score)
+   return
+
+// Place an UP brick at the current position
+def place_up():
+   let cell_index = level_select.y * level_data.w + level_select.x
+   let cell_type = level_data.data[cell_index]
+   // If this is an empty cell, do nothing
+   if cell_type == CELL_EMPTY:
+      return
+   // If this is already an UP brick, remove it 
+   else if cell_type == CELL_UP:   
+      // Move down every brick of the column 
+      let cell_next = cell_index - level_data.w
+      while cell_index >= 0 and level_data.data[cell_index] != CELL_EMPTY:
+         level_data.data[cell_index] = cell_next >= 0 ? level_data.data[cell_next] : CELL_EMPTY
+         cell_index = cell_next
+         cell_next = cell_next - level_data.w
+      level_ops += 1
+      return
+   // Else place an UP at this very position 
+   else:
+      // If there is no UP brick left, do nothing
+      if level_ops == 0: 
+         return
+      // If the column is full (namely the first row brick is not empty), do nothing 
+      if level_data.data[level_select.x] != CELL_EMPTY: 
+         return
+      // Place UP Brick
+      let cell_type_tmp = cell_type
+      level_data.data[cell_index] = CELL_UP
+      // Move up every brick of the column 
+      cell_index = cell_index - level_data.w
+      while cell_index >= 0 and cell_type_tmp != CELL_EMPTY:
+         let cell_type_tmp2 = level_data.data[cell_index]
+         level_data.data[cell_index] = cell_type_tmp
+         cell_type_tmp = cell_type_tmp2
+         cell_index = cell_index - level_data.w   
+      level_ops -= 1
+      return
+
+// Change the selected position
+def move_up(): level_select.y = max(0, level_select.y - 1); return
+def move_down(): level_select.y = min(level_data.h-1, level_select.y + 1); return
+def move_left(): level_select.x = max(0, level_select.x - 1); return
+def move_right(): level_select.x = min(level_data.w-1, level_select.x + 1); return
+
+let title_palette = [
+   #fece00,
+   #ea690e,
+   #ff00fc,
+   #970ceb
+]
+
+// Draw scores
+def draw_score():
+   let title_text = "Borderlands Science Remake"
+   let title_size = size(title_text)
+   let offset_char_x = SCREEN_SIZE.x / 2 - text_width(instructionFont, title_text) / 2
+   for s < title_size:
+      // let char_color = lerp(#f, #0, s / title_size)
+      let char_color = sample_palette(s / title_size, title_palette)
+      // draw_text({font: instructionFont, text: title_text[s], pos: xy(offset_char_x, 16), color: char_color, shadow: rgba(0,0,0,50%), outline: #0, x_align: "center"})
+      draw_text({font: instructionFont, text: title_text[s], pos: xy(offset_char_x, 16), color: #f, shadow: rgba(0,0,0,50%), outline: #0, x_align: "center"})
+      offset_char_x += text_width(instructionFont, title_text[s])+2
+      
+   // draw_text({font: instructionFont, text: "Borderlands Science Remake", pos: xy(0.5 * SCREEN_SIZE.x, 16), color: #f, x_align: "center"})
+   
+   // Score board
+   let cell_size = 16
+   let level_size_x = level_data.w * cell_size
+   let level_size_y = level_data.h * cell_size
+   let offset_x = SCREEN_SIZE.x - 3 * cell_size
+   let offset_y = SCREEN_SIZE.y / 4
+   
+                  
+   draw_text(instructionFont, "Highest",  xy(offset_x, offset_y),                               #f768fd, rgba(0,0,0,50%), #0, 0, -1, 1)
+   draw_text(instructionFont, level_data.highest_score, xy(offset_x, offset_y + cell_size),     #15e0f7, rgba(0,0,0,50%), #0, 0, -1, 1)
+   draw_text(instructionFont, "Score",    xy(offset_x, offset_y + 2 * cell_size),               #f768fd, rgba(0,0,0,50%), #0, 0, -1, 1)
+   draw_text(instructionFont, level_score,xy(offset_x, offset_y + 3 * cell_size),               #f7aa00, rgba(0,0,0,50%), #0, 0, -1, 1)
+   draw_text(instructionFont, "Target",   xy(offset_x, offset_y + 4 * cell_size),               #f768fd, rgba(0,0,0,50%), #0, 0, -1, 1)
+   draw_text(instructionFont, level_data.target_score, xy(offset_x, offset_y + 5 * cell_size),  #15e0f7, rgba(0,0,0,50%), #0, 0, -1, 1)
+   return
+   
+// Add a menu option to go back to the main menu
+def back_to_main():
+   set_mode(Title) because "Return to main menu has been selected"
+
+let option = {text:"Main menu", callback:back_to_main, confirm:false}
+set_pause_menu(option)
+   
+   
+   

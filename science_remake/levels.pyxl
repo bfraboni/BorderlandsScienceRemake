@@ -1,0 +1,86 @@
+// level description
+const CELL_EMPTY    = (1 << 0)
+const CELL_TYPE1    = (1 << 1)
+const CELL_TYPE2    = (1 << 2)
+const CELL_TYPE3    = (1 << 3)
+const CELL_TYPE4    = (1 << 4)
+const CELL_UP       = (1 << 5)
+
+const global_level_data = [
+   // level 1
+   {
+      w:7, 
+      h:12,
+      ops:9,
+      target_score:36,
+      highest_score:42,
+      data:
+      [
+         CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY,
+         CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY,
+         CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY,
+         CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY,
+         CELL_EMPTY, CELL_TYPE4, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY,
+         CELL_TYPE3, CELL_TYPE2, CELL_TYPE3, CELL_TYPE4, CELL_TYPE3, CELL_TYPE3, CELL_TYPE3,
+         CELL_TYPE4, CELL_TYPE3, CELL_TYPE2, CELL_TYPE3, CELL_TYPE3, CELL_TYPE4, CELL_TYPE2,
+         CELL_TYPE4, CELL_TYPE4, CELL_TYPE4, CELL_TYPE3, CELL_TYPE3, CELL_TYPE3, CELL_TYPE4,
+         CELL_TYPE4, CELL_TYPE2, CELL_TYPE3, CELL_TYPE2, CELL_TYPE2, CELL_TYPE2, CELL_TYPE2,
+         CELL_TYPE4, CELL_TYPE1, CELL_TYPE4, CELL_TYPE1, CELL_TYPE1, CELL_TYPE1, CELL_TYPE1,
+         CELL_TYPE4, CELL_TYPE1, CELL_TYPE1, CELL_TYPE1, CELL_TYPE4, CELL_TYPE4, CELL_TYPE1,
+         CELL_TYPE1, CELL_TYPE2, CELL_TYPE1, CELL_TYPE3, CELL_TYPE3, CELL_TYPE4, CELL_TYPE4
+      ],
+      match:
+      [
+         CELL_TYPE1 bitor CELL_TYPE4,
+         CELL_TYPE1 bitor CELL_TYPE4,
+         CELL_TYPE1 bitor CELL_TYPE4,
+         CELL_TYPE4 bitor CELL_TYPE3,
+         CELL_TYPE2 bitor CELL_TYPE3,
+         CELL_TYPE4,
+         CELL_TYPE1 bitor CELL_TYPE3,
+         CELL_TYPE1 bitor CELL_TYPE3,
+         CELL_TYPE1,
+         CELL_TYPE1 bitor CELL_TYPE4,
+         CELL_TYPE1 bitor CELL_TYPE4,
+         CELL_TYPE1 bitor CELL_TYPE4
+      ]        
+   },
+   // level 2
+   { 
+      w:4,  
+      h:6, 
+      ops:6, 
+      target_score:12,
+      highest_score:12,
+      data:
+      [
+         CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, 
+         CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, 
+         CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, 
+         CELL_TYPE1, CELL_TYPE2, CELL_TYPE3, CELL_TYPE4, 
+         CELL_TYPE1, CELL_TYPE2, CELL_TYPE3, CELL_TYPE4, 
+         CELL_TYPE1, CELL_TYPE2, CELL_TYPE3, CELL_TYPE4
+      ],
+      match:
+      [ 
+         CELL_TYPE4, 
+         CELL_TYPE4 bitor CELL_TYPE3, 
+         CELL_TYPE4 bitor CELL_TYPE3 bitor CELL_TYPE2, 
+         CELL_TYPE3 bitor CELL_TYPE2 bitor CELL_TYPE1, 
+         CELL_TYPE2 bitor CELL_TYPE1, 
+         CELL_TYPE1
+      ]
+   }
+]
+
+
+
+
+
+
+
+
+
+
+
+
