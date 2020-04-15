@@ -86,7 +86,7 @@ def draw_level():
    
    // offset of the top left corner of the grid
    let offset_x = (SCREEN_SIZE.x - level_size_x) / 2.0
-   let offset_y = (SCREEN_SIZE.y - level_size_y) / 2.0
+   let offset_y = (SCREEN_SIZE.y - level_size_y + cell_size) / 2.0
    
    level_score = 0
    
@@ -227,7 +227,8 @@ let title_palette = [
    #fece00,
    #ea690e,
    #ff00fc,
-   #970ceb
+   #970ceb,
+   #fece00
 ]
 
 // Draw scores
@@ -236,10 +237,14 @@ def draw_score():
    let title_size = size(title_text)
    let offset_char_x = SCREEN_SIZE.x / 2 - text_width(instructionFont, title_text) / 2
    for s < title_size:
-      // let char_color = lerp(#f, #0, s / title_size)
-      let char_color = sample_palette(s / title_size, title_palette)
-      // draw_text({font: instructionFont, text: title_text[s], pos: xy(offset_char_x, 16), color: char_color, shadow: rgba(0,0,0,50%), outline: #0, x_align: "center"})
-      draw_text({font: instructionFont, text: title_text[s], pos: xy(offset_char_x, 10), color: #f, shadow: rgba(0,0,0,50%), outline: #0, x_align: "center"})
+      let time_value = (s + 10 * now()) / title_size
+      let fract = time_value - floor(time_value) 
+      // let char_color = sample_palette(s / title_size, title_palette)
+      let char_color = sample_palette(fract, title_palette)
+      if check_win():
+         draw_text({font: instructionFont, text: title_text[s], pos: xy(offset_char_x, 16), color: char_color, shadow: rgba(0,0,0,50%), outline: #0, x_align: "center"})
+      else:
+         draw_text({font: instructionFont, text: title_text[s], pos: xy(offset_char_x, 16), color: #f, shadow: rgba(0,0,0,50%), outline: #0, x_align: "center"})
       offset_char_x += text_width(instructionFont, title_text[s])+2
     
    // Score board
@@ -255,6 +260,12 @@ def draw_score():
    draw_text(instructionFont, level_data.highest_score, xy(offset_x, offset_y + cell_size),     #15e0f7, rgba(0,0,0,50%), #0, 0, -1, 1)
    draw_text(instructionFont, "Score",    xy(offset_x, offset_y + 2 * cell_size),               #f768fd, rgba(0,0,0,50%), #0, 0, -1, 1)
    draw_text(instructionFont, level_score,xy(offset_x, offset_y + 3 * cell_size),               #f7aa00, rgba(0,0,0,50%), #0, 0, -1, 1)
+   
+   if check_win():
+      draw_text(instructionFont, "Next level" , xy(offset_x, offset_y + 6 * cell_size), #f768fd, rgba(0,0,0,50%), #0, 0, -1, 1)
+      let next_level = replace("(c)", joy.prompt) 
+      draw_text(instructionFont, next_level , xy(offset_x, offset_y + 7 * cell_size), #f7aa00, rgba(0,0,0,50%), #0, 0, -1, 1)
+   
    return
    
 // Draw instructions

@@ -8,7 +8,10 @@ const CELL_UP       = (1 << 5)
 const CELL_INACTIVE = (1 << 6)
 
 const global_level_data = [
-   ////////////////////////////////////////////////////////////////////////////////////
+   
+   //////////////////////////////////////////////////////////////////////////////////// W4
+   
+   //////////////////////////////////////////////////////////////////////////////////// 1
    { 
       w:4,  
       h:6, 
@@ -33,7 +36,7 @@ const global_level_data = [
          CELL_TYPE2
       ]
    },
-   ////////////////////////////////////////////////////////////////////////////////////
+   //////////////////////////////////////////////////////////////////////////////////// 2
    { 
       w:4,  
       h:6, 
@@ -58,7 +61,7 @@ const global_level_data = [
          CELL_TYPE1
       ]
    },
-   ////////////////////////////////////////////////////////////////////////////////////
+   //////////////////////////////////////////////////////////////////////////////////// 3
    { 
       w:4,  
       h:6, 
@@ -83,7 +86,7 @@ const global_level_data = [
          CELL_INACTIVE 
       ]
    },
-   ////////////////////////////////////////////////////////////////////////////////////
+   //////////////////////////////////////////////////////////////////////////////////// 4
    { 
       w:4,  
       h:8, 
@@ -112,7 +115,67 @@ const global_level_data = [
          CELL_INACTIVE 
       ]
    },
-   ////////////////////////////////////////////////////////////////////////////////////
+   
+   //////////////////////////////////////////////////////////////////////////////////// W6
+   
+   //////////////////////////////////////////////////////////////////////////////////// 5
+   { 
+      w:6,  
+      h:6, 
+      ops:8, 
+      highest_score:8,
+      data:
+      [
+         CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, 
+         CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, 
+         CELL_EMPTY, CELL_TYPE4, CELL_TYPE2, CELL_TYPE3, CELL_TYPE1, CELL_EMPTY,
+         CELL_TYPE3, CELL_TYPE2, CELL_TYPE4, CELL_TYPE1, CELL_TYPE3, CELL_TYPE3,
+         CELL_TYPE3, CELL_TYPE2, CELL_TYPE1, CELL_TYPE1, CELL_TYPE3, CELL_TYPE3,
+         CELL_TYPE3, CELL_TYPE1, CELL_TYPE4, CELL_TYPE2, CELL_TYPE4, CELL_TYPE3
+      ],
+      match:
+      [ 
+         CELL_INACTIVE, 
+         CELL_INACTIVE, 
+         CELL_TYPE3 bitor CELL_TYPE1, 
+         CELL_INACTIVE, 
+         CELL_TYPE2 bitor CELL_TYPE4,
+         CELL_INACTIVE 
+      ]
+   },
+   //////////////////////////////////////////////////////////////////////////////////// 6
+   { 
+      w:6,  
+      h:8, 
+      ops:5, 
+      highest_score:16,
+      data:
+      [
+         CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, 
+         CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, 
+         CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, 
+         CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, 
+         CELL_TYPE4, CELL_TYPE1, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_TYPE3,
+         CELL_TYPE4, CELL_TYPE3, CELL_TYPE1, CELL_EMPTY, CELL_TYPE4, CELL_TYPE4,
+         CELL_TYPE2, CELL_TYPE2, CELL_TYPE4, CELL_TYPE4, CELL_TYPE1, CELL_TYPE1,
+         CELL_TYPE3, CELL_TYPE3, CELL_TYPE3, CELL_TYPE3, CELL_TYPE3, CELL_TYPE4
+      ],
+      match:
+      [ 
+         CELL_INACTIVE, 
+         CELL_TYPE3 bitor CELL_TYPE2, 
+         CELL_TYPE1 bitor CELL_TYPE4, 
+         CELL_TYPE3 bitor CELL_TYPE4, 
+         CELL_TYPE1 bitor CELL_TYPE4, 
+         CELL_TYPE1 bitor CELL_TYPE2, 
+         CELL_TYPE3 bitor CELL_TYPE4, 
+         CELL_TYPE3 bitor CELL_TYPE2
+      ]
+   },
+   
+   //////////////////////////////////////////////////////////////////////////////////// W7
+   
+   //////////////////////////////////////////////////////////////////////////////////// 7
    {
       w:7, 
       h:12,
