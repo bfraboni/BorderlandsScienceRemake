@@ -14,8 +14,9 @@ draw_level()
 // Draw score
 draw_score()
 
-// Draw instructions
-draw_help()
+// Draw instructions only for easy levels (harder levels need more screen space to draw)
+if level_data.w <= 4:
+   draw_help()
 
 // Change selected cell
 if joy.xx > 0: move_right()
