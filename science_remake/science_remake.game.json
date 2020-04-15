@@ -22,9 +22,8 @@
     "assets": {
         "font": "quad://fonts/deja-8.font.json",
         "instructionFont": "quad://fonts/good-neighbors-9.font.json",
-        "spriteSheet": "quad://mygames/science_remake/sprites/spritesheet.sprite.json",
-        "spriteSheetLogo": "quad://mygames/science_remake/sprites/spritesheet_logo.sprite.json",
-        "spriteSheet2": "quad://sprites/kenney-ui-16x16.sprite.json"
+        "spriteSheet": "./sprites/spritesheet.sprite.json",
+        "spriteSheetLogo": "./sprites/spritesheet_logo.sprite.json"
     },
     "version": 0,
     "min_players": 1,
