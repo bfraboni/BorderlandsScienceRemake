@@ -249,12 +249,38 @@ def draw_score():
    let offset_x = SCREEN_SIZE.x - 3 * cell_size
    let offset_y = SCREEN_SIZE.y / 4
     
+   draw_text(instructionFont, "Level "+(level_index+1), xy(offset_x, offset_y - 2 * cell_size), #15e0f7, rgba(0,0,0,50%), #0, 0, -1, 1) 
+      
    draw_text(instructionFont, "Highest",  xy(offset_x, offset_y),                               #f768fd, rgba(0,0,0,50%), #0, 0, -1, 1)
    draw_text(instructionFont, level_data.highest_score, xy(offset_x, offset_y + cell_size),     #15e0f7, rgba(0,0,0,50%), #0, 0, -1, 1)
    draw_text(instructionFont, "Score",    xy(offset_x, offset_y + 2 * cell_size),               #f768fd, rgba(0,0,0,50%), #0, 0, -1, 1)
    draw_text(instructionFont, level_score,xy(offset_x, offset_y + 3 * cell_size),               #f7aa00, rgba(0,0,0,50%), #0, 0, -1, 1)
    // draw_text(instructionFont, "Target",   xy(offset_x, offset_y + 4 * cell_size),               #f768fd, rgba(0,0,0,50%), #0, 0, -1, 1)
    // draw_text(instructionFont, level_data.target_score, xy(offset_x, offset_y + 5 * cell_size),  #15e0f7, rgba(0,0,0,50%), #0, 0, -1, 1)
+   return
+   
+// Draw instructions
+def draw_help():
+   let cell_size = 16
+   let level_size_x = level_data.w * cell_size
+   let level_size_y = level_data.h * cell_size
+   let offset_x = 3 * cell_size
+   let offset_y = SCREEN_SIZE.y / 4
+   
+   draw_text(instructionFont, "Controls", xy(offset_x, offset_y - 2 * cell_size), #15e0f7, rgba(0,0,0,50%), #0, 0, -1, 1)
+   
+   draw_text(instructionFont, "Move" , xy(offset_x, offset_y), #f768fd, rgba(0,0,0,50%), #0, 0, -1, 1)
+   let control_move = replace("[<] [>] [^] [v]", joy.prompt) 
+   draw_text(instructionFont, control_move , xy(offset_x, offset_y + cell_size), #f7aa00, rgba(0,0,0,50%), #0, 0, -1, 1)
+      
+   draw_text(instructionFont, "Place UP" , xy(offset_x, offset_y + 2 * cell_size), #f768fd, rgba(0,0,0,50%), #0, 0, -1, 1)
+   let control_up = replace("(a) / space", joy.prompt) 
+   draw_text(instructionFont, control_up , xy(offset_x, offset_y + 3 * cell_size), #f7aa00, rgba(0,0,0,50%), #0, 0, -1, 1)
+    
+   draw_text(instructionFont, "Main menu" , xy(offset_x, offset_y + 4 * cell_size), #f768fd, rgba(0,0,0,50%), #0, 0, -1, 1)
+   let control_menu = replace("(b) / enter", joy.prompt) 
+   draw_text(instructionFont, control_menu , xy(offset_x, offset_y + 5 * cell_size), #f7aa00, rgba(0,0,0,50%), #0, 0, -1, 1)
+   
    return
    
 // Check win

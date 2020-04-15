@@ -40,7 +40,7 @@ if joy.xx < 0:
    level_index = (level_index + size(global_level_data) - 1) mod size(global_level_data)
    
 // If the controller presses A, play the selected level
-if joy.a:
+if joy.aa:
    // play_audio_clip(playSound)
    create_level(level_index)
    set_mode(Play) because "Level has been chosen"

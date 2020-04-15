@@ -14,6 +14,9 @@ draw_level()
 // Draw score
 draw_score()
 
+// Draw instructions
+draw_help()
+
 // Change selected cell
 if joy.xx > 0: move_right()
 if joy.xx < 0: move_left()
@@ -28,7 +31,10 @@ if joy.bb:
    // play_audio_clip(playSound)
    set_mode(Title) because "Return to main menu"
 
-// TODO add an animation when level is won
+// TODO 
+// add an animation when level is won, 
+// then when any button is pressed go to next level
+
 // If the high score is reached go to next level
 if check_win():
    // play_audio_clip(winSound)

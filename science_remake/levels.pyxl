@@ -38,7 +38,6 @@ const global_level_data = [
       w:4,  
       h:6, 
       ops:6, 
-      target_score:12,
       highest_score:12,
       data:
       [
@@ -64,7 +63,7 @@ const global_level_data = [
       w:4,  
       h:6, 
       ops:10, 
-      highest_score:8,
+      highest_score:10,
       data:
       [
          CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, 
@@ -118,7 +117,6 @@ const global_level_data = [
       w:7, 
       h:12,
       ops:9,
-      target_score:36,
       highest_score:42,
       data:
       [
