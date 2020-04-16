@@ -29,6 +29,8 @@ for p in [-1,0,1]:
       let item_outline = p == 0 ? #0 : #0
       let item_text = p == 0 ? replace("[<] Level " + (p + level_index + 1) + " [>]", joy.prompt) : "Level " + (p + level_index + 1)
       draw_text(  instructionFont, item_text, item_pos, item_color, item_shadow, item_outline, "center", "baseline") 
+      
+draw_text(instructionFont, replace("Press (a)", joy.prompt), xy(0.5 * SCREEN_SIZE.x, 0.90 * SCREEN_SIZE.y), #f7aa00, rgba(0,0,0,50%), nil, "center", "baseline")
 
 // If the controller presses left or right, change the selected level
 if joy.xx > 0:
