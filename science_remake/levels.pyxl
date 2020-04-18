@@ -148,7 +148,7 @@ const global_level_data = [
       w:6,  
       h:8, 
       ops:5, 
-      highest_score:16,
+      highest_score:20,
       data:
       [
          CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, 
@@ -201,7 +201,7 @@ const global_level_data = [
          CELL_TYPE1
       ]
    },
-   //////////////////////////////////////////////////////////////////////////////////// 7
+   //////////////////////////////////////////////////////////////////////////////////// 8
    { 
       w:6,  
       h:8, 
@@ -228,6 +228,267 @@ const global_level_data = [
          CELL_TYPE3, 
          CELL_TYPE2 bitor CELL_TYPE1, 
          CELL_TYPE2 bitor CELL_TYPE3
+      ]
+   },
+   //////////////////////////////////////////////////////////////////////////////////// 9
+   { 
+      w:6,  
+      h:8, 
+      ops:4, 
+      highest_score:16,
+      data:
+      [
+         CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, 
+         CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, 
+         CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, 
+         CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, 
+         CELL_TYPE3, CELL_TYPE3, CELL_EMPTY, CELL_EMPTY, CELL_TYPE1, CELL_TYPE3, 
+         CELL_TYPE4, CELL_TYPE4, CELL_TYPE2, CELL_TYPE1, CELL_TYPE2, CELL_TYPE4,
+         CELL_TYPE2, CELL_TYPE1, CELL_TYPE2, CELL_TYPE3, CELL_TYPE2, CELL_TYPE1,
+         CELL_TYPE4, CELL_TYPE4, CELL_TYPE4, CELL_TYPE3, CELL_TYPE2, CELL_TYPE4
+      ],
+      match:
+      [ 
+         CELL_INACTIVE, 
+         CELL_TYPE4 bitor CELL_TYPE2, 
+         CELL_TYPE3 bitor CELL_TYPE4, 
+         CELL_TYPE3 bitor CELL_TYPE2, 
+         CELL_TYPE1 bitor CELL_TYPE4, 
+         CELL_TYPE3 bitor CELL_TYPE2, 
+         CELL_TYPE3 bitor CELL_TYPE2, 
+         CELL_TYPE3 bitor CELL_TYPE2
+      ]
+   },
+   //////////////////////////////////////////////////////////////////////////////////// 10
+   { 
+      w:6,  
+      h:8, 
+      ops:11, 
+      highest_score:7,
+      data:
+      [
+         CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, 
+         CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, 
+         CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, 
+         CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, 
+         CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, 
+         CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, 
+         CELL_EMPTY, CELL_EMPTY, CELL_TYPE1, CELL_TYPE4, CELL_EMPTY, CELL_EMPTY,
+         CELL_TYPE2, CELL_TYPE4, CELL_TYPE1, CELL_TYPE1, CELL_TYPE3, CELL_TYPE4
+      ],
+      match:
+      [ 
+         CELL_INACTIVE, 
+         CELL_TYPE1, 
+         CELL_TYPE1 bitor CELL_TYPE3, 
+         CELL_TYPE2 bitor CELL_TYPE4, 
+         CELL_TYPE2 bitor CELL_TYPE4, 
+         CELL_TYPE1, 
+         CELL_TYPE1, 
+         CELL_TYPE1
+      ]
+   },
+   //////////////////////////////////////////////////////////////////////////////////// 11
+   { 
+      w:6,  
+      h:8, 
+      ops:5, 
+      highest_score:22,
+      data:
+      [
+         CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, 
+         CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, 
+         CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, 
+         CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, 
+         CELL_TYPE2, CELL_EMPTY, CELL_TYPE3, CELL_TYPE3, CELL_EMPTY, CELL_TYPE2, 
+         CELL_TYPE1, CELL_TYPE1, CELL_TYPE1, CELL_TYPE1, CELL_TYPE2, CELL_TYPE3, 
+         CELL_TYPE2, CELL_TYPE1, CELL_TYPE3, CELL_TYPE3, CELL_TYPE2, CELL_TYPE3,
+         CELL_TYPE4, CELL_TYPE3, CELL_TYPE3, CELL_TYPE1, CELL_TYPE3, CELL_TYPE3
+      ],
+      match:
+      [ 
+         CELL_INACTIVE, 
+         CELL_TYPE3 bitor CELL_TYPE1, 
+         CELL_TYPE2 bitor CELL_TYPE3, 
+         CELL_TYPE2 bitor CELL_TYPE3, 
+         CELL_TYPE2 bitor CELL_TYPE1, 
+         CELL_TYPE2 bitor CELL_TYPE3, 
+         CELL_TYPE2 bitor CELL_TYPE3, 
+         CELL_TYPE4 bitor CELL_TYPE3
+      ]
+   },
+   //////////////////////////////////////////////////////////////////////////////////// 12
+   { 
+      w:6,  
+      h:8, 
+      ops:4, 
+      highest_score:10,
+      data:
+      [
+         CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, 
+         CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, 
+         CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, 
+         CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, 
+         CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, 
+         CELL_EMPTY, CELL_TYPE1, CELL_TYPE1, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, 
+         CELL_TYPE4, CELL_TYPE2, CELL_TYPE1, CELL_TYPE3, CELL_TYPE2, CELL_TYPE1,
+         CELL_TYPE2, CELL_TYPE1, CELL_TYPE3, CELL_TYPE2, CELL_TYPE1, CELL_TYPE1
+      ],
+      match:
+      [ 
+         CELL_INACTIVE, 
+         CELL_TYPE3 bitor CELL_TYPE1, 
+         CELL_TYPE3 bitor CELL_TYPE1, 
+         CELL_TYPE2 bitor CELL_TYPE1, 
+         CELL_TYPE3 bitor CELL_TYPE4, 
+         CELL_TYPE2 bitor CELL_TYPE4, 
+         CELL_TYPE1, 
+         CELL_TYPE2
+      ]
+   },
+   //////////////////////////////////////////////////////////////////////////////////// 13
+   { 
+      w:6,  
+      h:8, 
+      ops:4, 
+      highest_score:8,
+      data:
+      [
+         CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, 
+         CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, 
+         CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, 
+         CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, 
+         CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, 
+         CELL_EMPTY, CELL_TYPE2, CELL_TYPE4, CELL_TYPE2, CELL_TYPE2, CELL_EMPTY, 
+         CELL_TYPE3, CELL_TYPE1, CELL_TYPE1, CELL_TYPE3, CELL_TYPE4, CELL_TYPE1,
+         CELL_TYPE3, CELL_TYPE1, CELL_TYPE1, CELL_TYPE4, CELL_TYPE4, CELL_TYPE2
+      ],
+      match:
+      [ 
+         CELL_INACTIVE, 
+         CELL_TYPE2, 
+         CELL_TYPE2, 
+         CELL_TYPE2, 
+         CELL_TYPE2 bitor CELL_TYPE3, 
+         CELL_TYPE1, 
+         CELL_TYPE2 bitor CELL_TYPE4, 
+         CELL_TYPE2
+      ]
+   },
+   //////////////////////////////////////////////////////////////////////////////////// 14
+   { 
+      w:6,  
+      h:8, 
+      ops:9, 
+      highest_score:16,
+      data:
+      [
+         CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, 
+         CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, 
+         CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, 
+         CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, 
+         CELL_TYPE2, CELL_EMPTY, CELL_TYPE2, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, 
+         CELL_TYPE4, CELL_EMPTY, CELL_TYPE4, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, 
+         CELL_TYPE3, CELL_TYPE4, CELL_TYPE3, CELL_TYPE1, CELL_TYPE1, CELL_TYPE2,
+         CELL_TYPE4, CELL_TYPE3, CELL_TYPE4, CELL_TYPE1, CELL_TYPE1, CELL_TYPE4
+      ],
+      match:
+      [ 
+         CELL_INACTIVE, 
+         CELL_TYPE1 bitor CELL_TYPE4, 
+         CELL_TYPE3 bitor CELL_TYPE4, 
+         CELL_TYPE1 bitor CELL_TYPE2, 
+         CELL_TYPE3 bitor CELL_TYPE2, 
+         CELL_TYPE4, 
+         CELL_TYPE3, 
+         CELL_TYPE1 bitor CELL_TYPE4
+      ]
+   },
+   //////////////////////////////////////////////////////////////////////////////////// 15
+   { 
+      w:6,  
+      h:8, 
+      ops:5, 
+      highest_score:14,
+      data:
+      [
+         CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, 
+         CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, 
+         CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, 
+         CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, 
+         CELL_TYPE2, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, 
+         CELL_TYPE1, CELL_EMPTY, CELL_EMPTY, CELL_TYPE3, CELL_EMPTY, CELL_TYPE3, 
+         CELL_TYPE3, CELL_TYPE3, CELL_TYPE1, CELL_TYPE2, CELL_TYPE1, CELL_TYPE3,
+         CELL_TYPE4, CELL_TYPE4, CELL_TYPE4, CELL_TYPE1, CELL_TYPE2, CELL_TYPE1
+      ],
+      match:
+      [ 
+         CELL_INACTIVE, 
+         CELL_TYPE1, 
+         CELL_TYPE2 bitor CELL_TYPE1, 
+         CELL_TYPE3 bitor CELL_TYPE4, 
+         CELL_TYPE3, 
+         CELL_TYPE2 bitor CELL_TYPE1, 
+         CELL_TYPE3 bitor CELL_TYPE1, 
+         CELL_TYPE3 bitor CELL_TYPE4
+      ]
+   },
+   //////////////////////////////////////////////////////////////////////////////////// 16
+   { 
+      w:6,  
+      h:8, 
+      ops:7, 
+      highest_score:18,
+      data:
+      [
+         CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, 
+         CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, 
+         CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, 
+         CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, 
+         CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_TYPE3, 
+         CELL_TYPE4, CELL_TYPE4, CELL_TYPE1, CELL_TYPE4, CELL_TYPE4, CELL_TYPE1, 
+         CELL_TYPE3, CELL_TYPE1, CELL_TYPE2, CELL_TYPE3, CELL_TYPE2, CELL_TYPE2,
+         CELL_TYPE3, CELL_TYPE4, CELL_TYPE3, CELL_TYPE1, CELL_TYPE3, CELL_TYPE1
+      ],
+      match:
+      [ 
+         CELL_INACTIVE, 
+         CELL_TYPE4 bitor CELL_TYPE3, 
+         CELL_TYPE3, 
+         CELL_TYPE2 bitor CELL_TYPE3, 
+         CELL_TYPE4 bitor CELL_TYPE1, 
+         CELL_TYPE2 bitor CELL_TYPE3, 
+         CELL_TYPE4 bitor CELL_TYPE3, 
+         CELL_TYPE2 bitor CELL_TYPE3
+      ]
+   },
+   //////////////////////////////////////////////////////////////////////////////////// 17
+   { 
+      w:6,  
+      h:8, 
+      ops:13, 
+      highest_score:12,
+      data:
+      [
+         CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, 
+         CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, 
+         CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, 
+         CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, 
+         CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, 
+         CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_TYPE3, CELL_EMPTY, CELL_EMPTY, 
+         CELL_TYPE4, CELL_TYPE4, CELL_TYPE3, CELL_TYPE2, CELL_TYPE3, CELL_TYPE1,
+         CELL_TYPE3, CELL_TYPE1, CELL_TYPE1, CELL_TYPE2, CELL_TYPE3, CELL_TYPE2
+      ],
+      match:
+      [ 
+         CELL_INACTIVE, 
+         CELL_TYPE2 bitor CELL_TYPE1, 
+         CELL_TYPE3 bitor CELL_TYPE1, 
+         CELL_TYPE3 bitor CELL_TYPE1, 
+         CELL_TYPE1 bitor CELL_TYPE4, 
+         CELL_TYPE2, 
+         CELL_TYPE1, 
+         CELL_TYPE2 bitor CELL_TYPE1
       ]
    },
    
