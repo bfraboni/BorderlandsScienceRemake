@@ -172,6 +172,64 @@ const global_level_data = [
          CELL_TYPE3 bitor CELL_TYPE2
       ]
    },
+   //////////////////////////////////////////////////////////////////////////////////// 7
+   { 
+      w:6,  
+      h:8, 
+      ops:7, 
+      highest_score:11,
+      data:
+      [
+         CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, 
+         CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, 
+         CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, 
+         CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, 
+         CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, 
+         CELL_EMPTY, CELL_EMPTY, CELL_TYPE1, CELL_EMPTY, CELL_EMPTY, CELL_TYPE1,
+         CELL_TYPE2, CELL_TYPE1, CELL_TYPE1, CELL_TYPE3, CELL_TYPE2, CELL_TYPE3,
+         CELL_TYPE1, CELL_TYPE1, CELL_TYPE2, CELL_TYPE2, CELL_TYPE4, CELL_TYPE4
+      ],
+      match:
+      [ 
+         CELL_INACTIVE, 
+         CELL_TYPE1, 
+         CELL_TYPE1, 
+         CELL_TYPE1, 
+         CELL_TYPE1 bitor CELL_TYPE4, 
+         CELL_TYPE2, 
+         CELL_TYPE3 bitor CELL_TYPE1, 
+         CELL_TYPE1
+      ]
+   },
+   //////////////////////////////////////////////////////////////////////////////////// 7
+   { 
+      w:6,  
+      h:8, 
+      ops:10, 
+      highest_score:15,
+      data:
+      [
+         CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, 
+         CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, 
+         CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, 
+         CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, 
+         CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, CELL_EMPTY, 
+         CELL_TYPE1, CELL_TYPE3, CELL_TYPE2, CELL_TYPE1, CELL_TYPE1, CELL_TYPE4,
+         CELL_TYPE4, CELL_TYPE3, CELL_TYPE4, CELL_TYPE1, CELL_TYPE4, CELL_TYPE2,
+         CELL_TYPE4, CELL_TYPE2, CELL_TYPE3, CELL_TYPE2, CELL_TYPE3, CELL_TYPE3
+      ],
+      match:
+      [ 
+         CELL_INACTIVE, 
+         CELL_TYPE4 bitor CELL_TYPE3, 
+         CELL_TYPE4 bitor CELL_TYPE1, 
+         CELL_TYPE4 bitor CELL_TYPE1, 
+         CELL_TYPE3 bitor CELL_TYPE1, 
+         CELL_TYPE3, 
+         CELL_TYPE2 bitor CELL_TYPE1, 
+         CELL_TYPE2 bitor CELL_TYPE3
+      ]
+   },
    
    //////////////////////////////////////////////////////////////////////////////////// W7
    
