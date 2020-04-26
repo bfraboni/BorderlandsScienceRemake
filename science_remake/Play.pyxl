@@ -34,7 +34,7 @@ if joy.bb:
 
 // If the high score is reached allow to go to next level
 if check_win():
-   if joy.dd:
+   if joy.cc:
       // play_audio_clip(winSound)
       level_index = level_index + 1 mod size(global_level_data)   
       create_level(level_index)
