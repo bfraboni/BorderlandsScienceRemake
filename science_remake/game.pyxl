@@ -263,7 +263,7 @@ def draw_score():
     
    if check_win():
       draw_text(instructionFont, "Next level" , xy(offset_x, offset_y + 6 * cell_size), #f768fd, rgba(0,0,0,50%), #0, 0, -1, 1)
-      let next_level = replace("(d)", joy.prompt) 
+      let next_level = replace("(c)", joy.prompt) 
       draw_text(instructionFont, next_level , xy(offset_x, offset_y + 7 * cell_size), #f7aa00, rgba(0,0,0,50%), #0, 0, -1, 1)
    
    return
